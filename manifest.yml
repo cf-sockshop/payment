@@ -4,6 +4,8 @@ applications:
   memory: 512M
   instances: 1
   buildpack: https://github.com/cloudfoundry/go-buildpack.git
+  services:
+  - dynatrace
   env: 
     GOPACKAGENAME : APPNAME
     APP_PORT: 8080
