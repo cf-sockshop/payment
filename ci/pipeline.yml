@@ -79,7 +79,7 @@ resources:
 
 # PCF Environments
 
-- name: pcf-stage
+- name: cf-stage
   type: cf
   source:
     api: ((pcf-stage-api))
@@ -89,7 +89,7 @@ resources:
     space: ((pcf-stage-space))
     skip_cert_check: false
 
-- name: pcf-production
+- name: cf-production
   type: cf
   source:
     api: ((pcf-prod-api))
@@ -194,7 +194,7 @@ jobs:
       pipelinetaskname: deploy-payment-to-stage
       deployversion: v1.0
       APP_REPO: git-payment 
-  - put: pcf-stage
+  - put: cf-stage
     params:
       path: git-payment
       manifest: app-manifest-output/manifest.yml 
@@ -254,7 +254,7 @@ jobs:
       pipelinetaskname: deploy-payment-to-prod
       deployversion: v1.0 
       APP_REPO: git-payment      
-  - put: pcf-production
+  - put: cf-production
     params:
       path: git-payment
       manifest: app-manifest-output/manifest.yml 
